@@ -1,0 +1,11 @@
+[package]
+name = "fhnw-presentation"
+version = "0.1.0"
+description = "A professional presentation template for FHNW (University of Applied Sciences and Arts Northwestern Switzerland) using Typst"
+authors = ["Ruben Hutter"]
+license = "CC0"
+repository = "https://github.com/yourusername/fhnw-typst-template"
+keywords = ["presentation", "template", "fhnw", "beamer"]
+categories = ["templates"]
+
+[dependencies]
