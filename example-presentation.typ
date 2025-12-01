@@ -66,15 +66,15 @@ Numbered list:
 #three-columns[
   *Column 1*
 
-  Content for the left column with details and information.
+  Left content here
 ][
   *Column 2*
 
-  Content in the middle with additional details and explanations.
+  Center content here
 ][
   *Column 3*
 
-  Content on the right with supplementary information.
+  Right content here
 ]
 
 #section-slide[Content Blocks]
@@ -82,19 +82,19 @@ Numbered list:
 == Example Block
 
 #example-block(title: "Example")[
-  This is an example block with yellow background. Use it to highlight examples or important information.
+  Example content here
 ]
 
 == Definition Block
 
 #definition-block(title: "Definition")[
-  A definition block with teal background for important definitions or concepts.
+  Definition content here
 ]
 
 == Alert Block
 
 #alert-block(title: "Important")[
-  An alert block with red background for warnings or critical information.
+  Alert content here
 ]
 
 == Code Block
@@ -134,13 +134,11 @@ $ integral_0^infinity e^(-x) dif x = 1 $
 
 == Text Styling
 
-You can use various text styles:
-
-- *Bold text* for emphasis
-- _Italic text_ for alternative styling
-- #text(fill: fhnw-red)[Colored text] using custom colors
-- `Monospace for code` in text
-- #link("https://typst.app")[Links] in your content
+- *Bold text* with bold
+- _Emphasized text_ with italics
+- #text(fill: fhnw-red)[Colored text] with colors
+- `Monospace` for code
+- #link("https://typst.app")[Links]
 
 == Thank You
 

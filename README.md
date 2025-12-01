@@ -4,15 +4,14 @@ A professional presentation template following the University of Applied Science
 
 ## Features
 
-- ✨ Official FHNW colors and branding
-- 📑 Clean, professional slide layouts
-- 🎨 Multiple column layouts (2 and 3 columns)
-- 📦 Styled content blocks (example, definition, alert)
-- 💻 Code highlighting support
-- 📊 Tables and figures with captions
-- 🧮 Mathematical equations
-- 🔢 Automatic page numbering
-- ⚙️ Highly customizable
+- Official FHNW colors and branding
+- Multiple column layouts (2 and 3 columns)
+- Styled content blocks (example, definition, alert)
+- Code highlighting support
+- Tables and figures with captions
+- Mathematical equations
+- Automatic page numbering
+- Fully customizable
 
 ## Quick Start
 

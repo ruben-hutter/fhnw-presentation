@@ -1,20 +1,18 @@
 // FHNW Presentation Template for Typst
-// Based on the FHNW LaTeX Beamer template
-// Adapted for use with Typst presentation system
 
 // ============================================================================
-// Color Definitions (from FHNW Beamer template)
+// Color Definitions
 // ============================================================================
 
-#let fhnw-yellow = rgb("#fde70e")      // Primary FHNW yellow (bcolor1/2)
-#let fhnw-dark-gray = rgb("#2d373c")   // Dark gray (bcolor3)
-#let fhnw-gray = rgb("#8c9196")        // Medium gray (bcolor4)
-#let fhnw-red = rgb("#d20537")         // Highlight red (bcolor5)
-#let fhnw-light-red = rgb("#eb829b")   // Light red (bcolor6)
-#let fhnw-light-gray = rgb("#bec3c8")  // Light gray (bcolor7)
-#let fhnw-teal = rgb("#006e6e")        // Teal (bcolor8)
-#let fhnw-black = rgb("#000000")       // Black (bcolor9)
-#let fhnw-white = rgb("#ffffff")       // White (bcolor10)
+#let fhnw-yellow = rgb("#fde70e")      // Primary yellow
+#let fhnw-dark-gray = rgb("#2d373c")   // Dark gray
+#let fhnw-gray = rgb("#8c9196")        // Medium gray
+#let fhnw-red = rgb("#d20537")         // Highlight red
+#let fhnw-light-red = rgb("#eb829b")   // Light red
+#let fhnw-light-gray = rgb("#bec3c8")  // Light gray
+#let fhnw-teal = rgb("#006e6e")        // Teal
+#let fhnw-black = rgb("#000000")       // Black
+#let fhnw-white = rgb("#ffffff")       // White
 
 // ============================================================================
 // Presentation Configuration Function
@@ -259,7 +257,7 @@
   )
 }
 
-// Colored box helper (similar to Beamer blocks)
+// Colored box helper
 #let color-box(
   title: none,
   fill-color: fhnw-yellow.lighten(60%),
@@ -359,7 +357,6 @@
     #grid(
       columns: (60%, 40%),
       column-gutter: 0em,
-      // Left side with yellow background
       block(
         width: 100%,
         height: 100%,
@@ -372,7 +369,6 @@
           ]
         }
       ],
-      // Right side with content
       block(
         width: 100%,
         height: 100%,
