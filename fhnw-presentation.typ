@@ -36,8 +36,7 @@
   // Set document metadata
   set document(
     title: title,
-    author: authors,
-    date: date
+    author: authors
   )
   
   // Page setup
@@ -57,14 +56,16 @@
         let total = counter(page).final().first() - 1
         
         set text(size: 8pt)
+        let page-info = if show-total-slides {
+          [#page-num / #total]
+        } else {
+          [#page-num]
+        }
         grid(
           columns: (1fr, auto),
           align: (left, right),
           text(fill: fhnw-black)[#title],
-          text(fill: fhnw-black)[
-            #page-num
-            #if show-total-slides [ / #total]
-          ]
+          text(fill: fhnw-black)[#page-info]
         )
         v(-0.5em)
         line(length: 100%, stroke: 0.5pt + fhnw-yellow)
@@ -74,7 +75,7 @@
   
   // Text settings
   set text(
-    font: "Arial",
+    font: ("Arial", "sans-serif"),
     size: 14pt,
     fill: fhnw-black
   )
@@ -330,7 +331,7 @@
     inset: 1em,
     radius: 0pt,
     {
-      set text(font: "Courier New", size: 11pt)
+      set text(font: ("Courier", "monospace"), size: 11pt)
       body
     }
   )

@@ -153,6 +153,6 @@ You can use various text styles:
 
   #text(size: 14pt)[
     Your Name\
-    #text(fill: fhnw-dark-gray)[your.email@fhnw.ch]
+    #text(fill: fhnw-dark-gray)[your.email\@fhnw.ch]
   ]
 ]
