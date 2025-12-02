@@ -143,6 +143,47 @@ $ integral_0^infinity e^(-x) dif x = 1 $
 - `Monospace` for code
 - #link("https://typst.app")[Links]
 
+#section-slide(
+  "Advanced Layouts",
+  subtitle: "Additional layout options"
+)
+
+== Side-by-Side Layout
+
+#side-by-side(
+  image("images/campus-architecture.jpeg"),
+  [
+    *Modern Campus*
+
+    This side-by-side layout combines
+    images and text seamlessly.
+
+    - Perfect for visual presentations
+    - Flexible width ratios
+    - Works with any content type
+
+    You can place an image on the left
+    and text on the right, or adjust
+    the width to your needs.
+  ]
+)
+
+== Key Points
+
+#key-points(
+  points: (
+    [*Point One*\
+    Description of the first key point],
+    [*Point Two*\
+    Description of the second key point],
+    [*Point Three*\
+    Description of the third key point],
+    [*Point Four*\
+    Description of the fourth key point],
+  ),
+  columns: 2
+)
+
 == Thank You
 
 #v(4em)

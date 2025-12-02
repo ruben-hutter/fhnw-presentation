@@ -124,10 +124,10 @@
   
   // Link styling
   show link: it => text(fill: fhnw-teal, it)
-  
+
   // Emphasis styling
   show emph: it => text(weight: "bold", it)
-  show strong: it => text(weight: "bold", fill: fhnw-red, it)
+  show strong: it => text(weight: "bold", fill: rgb("#a01030"), it)
   
   // ============================================================================
   // Title Slide
@@ -257,7 +257,7 @@
 
 // Alert text (highlighted in red)
 #let alert(content) = {
-  text(fill: fhnw-red, weight: "bold", content)
+  text(fill: rgb("#a01030"), weight: "bold", content)
 }
 
 // Two-column layout helper
@@ -391,10 +391,12 @@
   )
 }
 
-// Last slide helper (thank you slide)
+// Last slide helper (thank you / closing slide)
 #let last-slide(
   content,
-  image-path: none
+  image-path: none,
+  left-width: 60%,
+  background-color: fhnw-yellow
 ) = {
   pagebreak()
   page(
@@ -403,12 +405,12 @@
     footer: none,
   )[
     #grid(
-      columns: (60%, 40%),
+      columns: (left-width, 1fr),
       column-gutter: 0em,
       block(
         width: 100%,
         height: 100%,
-        fill: fhnw-yellow,
+        fill: background-color,
         inset: 2em,
       )[
         #if image-path != none {
@@ -433,11 +435,72 @@
 // Reference citation helper
 #let cite-slide(title: "References", body) = {
   pagebreak()
-  
+
   heading(level: 2)[#title]
-  
+
   set text(size: 10pt)
   set par(leading: 0.5em)
-  
+
   body
+}
+
+// Side-by-side layout (image + text or text + image)
+#let side-by-side(
+  left-content,
+  right-content,
+  left-width: 50%
+) = {
+  grid(
+    columns: (left-width, 1fr),
+    column-gutter: 2em,
+    left-content,
+    right-content
+  )
+}
+
+// Full image slide with optional caption
+#let full-image-slide(
+  image-path,
+  caption: none,
+  width: 80%
+) = {
+  pagebreak()
+  page(
+    header: none,
+    footer: none,
+  )[
+    #set align(center + horizon)
+
+    #image(image-path, width: width)
+
+    #if caption != none [
+      #v(1.5em)
+      #set text(size: 12pt, fill: fhnw-dark-gray)
+      #caption
+    ]
+  ]
+}
+
+// Key points/highlights layout (typically 2-4 points)
+#let key-points(
+  points: (),
+  columns: 2
+) = {
+  grid(
+    columns: (1fr,) * columns,
+    column-gutter: 1.5em,
+    row-gutter: 1.5em,
+    ..points.map(point => {
+      block(
+        width: 100%,
+        fill: fhnw-yellow.lighten(70%),
+        stroke: (paint: fhnw-yellow.lighten(40%), thickness: 1pt),
+        inset: 1.2em,
+        radius: 3pt,
+      )[
+        #set text(size: 13pt, weight: "bold", fill: fhnw-black)
+        #point
+      ]
+    })
+  )
 }
