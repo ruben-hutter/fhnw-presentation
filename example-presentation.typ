@@ -19,7 +19,10 @@
 3. Content Blocks
 4. Special Elements
 
-#section-slide[Basic Slides]
+#section-slide(
+  "Basic Slides",
+  subtitle: "Introduction to slide basics"
+)
 
 == Slide with Bullet Points
 
@@ -31,7 +34,7 @@ Basic content with bullet points:
 
 #v(0.5em)
 
-Use `#section-slide[Name]` to create section dividers.
+Use `#section-slide("Name")` or `#section-slide("Name", subtitle: "Description")` to create section dividers.
 
 == Lists and Numbering
 

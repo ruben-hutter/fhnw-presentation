@@ -72,7 +72,11 @@ Your content here...
 
 ### Section Dividers
 ```typst
-#section-slide[Section Name]
+// Without subtitle
+#section-slide("Section Name")
+
+// With subtitle (optional)
+#section-slide("Section Name", subtitle: "Optional description")
 ```
 
 ### Two-Column Layout

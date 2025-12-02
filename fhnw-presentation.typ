@@ -28,6 +28,7 @@
   aspect-ratio: "16-9",
   show-total-slides: true,
   logo: none,
+  swiss-universities-logo: "assets/swissuniversity.png",
   body
 ) = {
   
@@ -73,7 +74,7 @@
   
   // Text settings
   set text(
-    font: ("Arial", "sans-serif"),
+    font: ("Roboto", "Liberation Sans"),
     size: 14pt,
     fill: fhnw-black
   )
@@ -151,11 +152,13 @@
           image(logo, height: 3em)
         )
       }
-      #place(
-        top + right,
-        dy: 0em,
-        image("assets/swissuniversity.png", height: 1em)
-      )
+      #if swiss-universities-logo != none {
+        place(
+          top + right,
+          dy: 0em,
+          image(swiss-universities-logo, height: 1em)
+        )
+      }
     ]
     
     #v(2em)
@@ -219,15 +222,36 @@
 // ============================================================================
 
 // Section divider slide
-#let section-slide(title) = {
+#let section-slide(title, subtitle: none) = {
   pagebreak()
   page(
     header: none,
     footer: none,
   )[
     #set align(horizon + left)
-    #set text(size: 32pt, weight: "bold", fill: fhnw-black)
-    #title
+    #grid(
+      columns: (0.8cm, 1fr),
+      column-gutter: 1.5cm,
+      // Vertical accent bar
+      block(
+        width: 100%,
+        height: 100%,
+        fill: fhnw-yellow,
+      )[],
+      // Title and optional subtitle
+      block(
+        width: 100%,
+      )[
+        #set text(size: 36pt, weight: "bold", fill: fhnw-black)
+        #title
+
+        #if subtitle != none [
+          #v(0.8em)
+          #set text(size: 18pt, weight: "regular", fill: fhnw-dark-gray)
+          #subtitle
+        ]
+      ]
+    )
   ]
 }
 
@@ -267,23 +291,29 @@
   block(
     width: 100%,
     fill: fill-color,
-    inset: 1em,
-    radius: 0pt,
+    inset: 0em,
+    radius: 3pt,
     stroke: none,
     {
       if title != none {
         block(
-          width: 100% + 2em,
-          inset: (x: 1em, y: 0.5em),
+          width: 100%,
+          inset: (x: 1em, y: 0.6em),
           fill: title-color,
-          outset: (x: 1em, top: 1em),
+          radius: (top: 3pt),
         )[
           #set text(weight: "bold", fill: fhnw-black)
           #title
         ]
-        v(0.5em)
       }
-      body
+      block(
+        width: 100%,
+        inset: 1em,
+        fill: fill-color,
+        radius: (bottom: 3pt),
+      )[
+        #body
+      ]
     }
   )
 }
@@ -321,15 +351,33 @@
 // Code block with FHNW styling
 #let code-block(
   lang: none,
+  title: none,
   body
 ) = {
   block(
     width: 100%,
     fill: fhnw-light-gray.lighten(50%),
+    stroke: (paint: fhnw-light-gray, thickness: 0.5pt),
     inset: 1em,
-    radius: 0pt,
+    radius: 3pt,
+    breakable: true,
     {
-      set text(font: ("Courier", "monospace"), size: 11pt)
+      // Language/title label
+      if lang != none or title != none {
+        block(
+          width: 100% + 2em,
+          fill: fhnw-light-gray.lighten(30%),
+          inset: (x: 1em, y: 0.5em),
+          outset: (x: 1em, top: 1em),
+          radius: (top: 3pt),
+        )[
+          #set text(size: 9pt, weight: "bold", fill: fhnw-dark-gray)
+          #if title != none { title } else { lang }
+        ]
+        v(0.5em)
+      }
+
+      set text(font: ("Source Code Pro", "Liberation Mono"), size: 11pt)
       body
     }
   )
