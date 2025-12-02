@@ -1,7 +1,7 @@
 // Example FHNW Presentation
 // This demonstrates all features of the fhnw-presentation template
 
-#import "fhnw-presentation.typ": *
+#import "lib.typ": *
 
 #show: fhnw-theme.with(
   title: "Example Presentation",
