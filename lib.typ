@@ -260,6 +260,19 @@
   text(fill: rgb("#a01030"), weight: "bold", content)
 }
 
+// Distribute items over the free vertical space of the slide.
+// Leftover space is shared equally between the gaps between the
+// items and a reserve below the last item, so the last item never
+// crowds the footer. On a full slide the gaps collapse to normal
+// paragraph spacing. Pass bottom: none to use up all space.
+// Pass single list items to spread bullet points, e.g.
+//   #spread([- First point], [- Second point])
+#let spread(bottom: auto, ..items) = {
+  let joined = items.pos().join(v(1fr))
+  if bottom == none { joined }
+  else { joined + if bottom == auto { v(1fr) } else { bottom } }
+}
+
 // Two-column layout helper
 #let two-columns(left-content, right-content) = {
   grid(
@@ -294,27 +307,31 @@
     inset: 0em,
     radius: 3pt,
     stroke: none,
-    {
-      if title != none {
-        block(
-          width: 100%,
-          inset: (x: 1em, y: 0.6em),
-          fill: title-color,
-          radius: (top: 3pt),
-        )[
-          #set text(weight: "bold", fill: fhnw-black)
-          #title
-        ]
-      }
+    // grid joins the title bar and body without paragraph spacing
+    grid(
+      columns: 1,
+      ..if title != none {
+        (
+          block(
+            width: 100%,
+            inset: (x: 1em, y: 0.6em),
+            fill: title-color,
+            radius: (top: 3pt),
+          )[
+            #set text(weight: "bold", fill: fhnw-black)
+            #title
+          ],
+        )
+      },
       block(
         width: 100%,
-        inset: 1em,
+        inset: (x: 1em, top: if title == none { 1em } else { 0.7em }, bottom: 1em),
         fill: fill-color,
         radius: (bottom: 3pt),
       )[
         #body
-      ]
-    }
+      ],
+    )
   )
 }
 
@@ -358,28 +375,36 @@
     width: 100%,
     fill: fhnw-light-gray.lighten(50%),
     stroke: (paint: fhnw-light-gray, thickness: 0.5pt),
-    inset: 1em,
+    inset: 0em,
     radius: 3pt,
     breakable: true,
-    {
-      // Language/title label
-      if lang != none or title != none {
-        block(
-          width: 100% + 2em,
-          fill: fhnw-light-gray.lighten(30%),
-          inset: (x: 1em, y: 0.5em),
-          outset: (x: 1em, top: 1em),
-          radius: (top: 3pt),
-        )[
-          #set text(size: 9pt, weight: "bold", fill: fhnw-dark-gray)
-          #if title != none { title } else { lang }
-        ]
-        v(0.5em)
-      }
-
-      set text(font: ("Source Code Pro", "Liberation Mono"), size: 11pt)
-      body
-    }
+    // grid joins the label bar and body without paragraph spacing,
+    // the label sits flush at the top edge (padding lives in the cells)
+    grid(
+      columns: 1,
+      ..if lang != none or title != none {
+        (
+          block(
+            width: 100%,
+            fill: fhnw-light-gray,
+            inset: (x: 1em, y: 0.6em),
+            radius: (top: 3pt),
+            above: 0em,
+          )[
+            #set text(size: 10pt, weight: "bold", fill: fhnw-black)
+            #if title != none { title } else { lang }
+          ],
+        )
+      },
+      block(
+        width: 100%,
+        inset: (x: 1em, top: 0.8em, bottom: 1em),
+        above: 0em,
+      )[
+        #set text(font: ("Source Code Pro", "Liberation Mono"), size: 11pt)
+        #body
+      ],
+    )
   )
 }
 

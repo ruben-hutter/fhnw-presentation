@@ -1,15 +1,26 @@
-// Example FHNW Presentation
-// This demonstrates all features of the fhnw-presentation template
+// FHNW Presentation Template - Example & Documentation
+//
+// This file demonstrates all features of the FHNW presentation template.
+// You can use it as:
+//   1. A reference while building your own presentation
+//   2. A starting point - just replace the content below with your own
+//
+// To create your presentation:
+//   - Replace the title, authors, email, and date below
+//   - Replace the content sections with your own slides
+//   - Add your images to the images/ folder
+//   - Compile with: typst compile example-presentation.typ
 
 #import "lib.typ": *
 
+// Configure your presentation here
 #show: fhnw-theme.with(
-  title: "Example Presentation",
-  subtitle: "Template Demonstration",
-  authors: ("Your Name",),
-  email: "your.email@fhnw.ch",
-  date: "December 2024",
-  logo: "assets/fhnw-logo.png",
+  title: "Example Presentation",           // Your presentation title
+  subtitle: "Template Demonstration",      // Optional subtitle (use none to omit)
+  authors: ("Your Name",),                 // Can be multiple: ("Name 1", "Name 2")
+  email: "your.email@fhnw.ch",            // Contact email
+  date: "December 2024",                   // Presentation date
+  logo: "assets/fhnw-logo.png",           // Logo path (keep as-is for FHNW logo)
 )
 
 = Agenda
@@ -45,6 +56,18 @@ Numbered list:
    - Nested bullet
    - Another nested item
 3. Third item
+
+== Spreading Content
+
+Slides with little content can distribute their bullet points over the
+free space with `spread` (no effect when the slide is already full; a
+reserve below the last item keeps it clear of the footer):
+
+#spread(
+  [- First point],
+  [- Second point],
+  [- Third point],
+)
 
 #section-slide[Layouts]
 
