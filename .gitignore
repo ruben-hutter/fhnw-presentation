@@ -1,5 +1,7 @@
 # Typst build artifacts
+# Ignore all PDFs except the example
 *.pdf
+!example-presentation.pdf
 
 # IDE and editor files
 .vscode/
